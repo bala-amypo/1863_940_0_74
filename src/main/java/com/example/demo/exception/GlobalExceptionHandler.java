@@ -21,12 +21,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleMethod(
             MethodArgumentNotValidException ex) {
 
-        Map<String, String> errors = new HashMap<>();
+    Map<String, String> errors = new HashMap<>();
 
-        ex.getBindingResult().getFieldErrors().forEach(fieldError ->
-                errors.put(fieldError.getField(), fieldError.getDefaultMessage())
-        );
+    ex.getBindingResult().getFieldErrors().forEach(fieldError ->
+            errors.put(fieldError.getField(),
+                       fieldError.getDefaultMessage())
+    );
 
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-    }
+    return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+}
+
 }

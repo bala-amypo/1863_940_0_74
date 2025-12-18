@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ public class StudentController {
     public ResponseEntity<Student> postdata(
             @Valid @RequestBody Student student) {
 
-        return studentService.saveStudent(student);
+        Student savedStudent = studentService.saveStudent(student);
+        return new ResponseEntity<>(savedStudent, HttpStatus.CREATED);
     }
 }
