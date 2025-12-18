@@ -13,7 +13,6 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @PostMapping("/postdata")
     public Student postdata(@RequestBody Student student){
         return studentService.saveStudent(student);
     }
