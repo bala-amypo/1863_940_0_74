@@ -1,13 +1,14 @@
 package com.example.demo.exception;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseEntity;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler{
 
     @ExceptionHandler(ResourceNotFoundException.class){
-        public String handleNotFound(ResourceNotFoundException.ex){
-            return 
+        public ResponseEntity<String> handleNotFound(ResourceNotFoundException.ex){
+            return new ResponseEntity<>.(ex.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
 }
